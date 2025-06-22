@@ -15,12 +15,12 @@ import com.example.demo.ui.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DemoTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
+        super.onCreate(savedInstanceState) // 调用父类初始化
+        enableEdgeToEdge() // 启用全面屏
+        setContent { // 设置UI内容
+            DemoTheme { // 应用自定义主题
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding -> // 布局脚手架​​：提供Material Design基础结构
+                    Greeting( // 显示主要内容
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
+@Composable // 声明可组合函数：可被渲染的UI组件
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
@@ -38,8 +38,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
-@Composable
+@Preview(showBackground = true) // 预览注解：在Android Studio右侧显示UI效果
+@Composable // 专用于预览的组合函数
 fun GreetingPreview() {
     DemoTheme {
         Greeting("Android")

@@ -60,10 +60,10 @@ dependencies {
     // --- 以下是我们需要为天气功能添加的依赖 ---
 
     // ViewModel: 用于在 UI 控制器（如 Fragment）中存储和管理界面相关的数据
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     // LiveData: 一个可观察的数据持有者类，可以在数据变化时通知观察者（如 UI）
     // 如果你更喜欢使用 Flow，这个可以不加
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
     // Kotlin Coroutines: 用于简化异步代码，让网络请求等后台任务更容易管理
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
@@ -76,4 +76,8 @@ dependencies {
     // Navigation Component: 用于简化应用内的导航，尤其是在 Fragment 之间
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
