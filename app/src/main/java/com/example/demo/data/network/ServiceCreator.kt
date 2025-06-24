@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 // 单例对象生命，Kotlin会创建全局唯一实例
 object ServiceCreator {
-    private const val BASE_URL = "https://api_caiyunapp.com/"
+    private const val BASE_URL = "https://api.caiyunapp.com/"
 
     // 创建retrofit实例 私有不可变
     // .baseurl 设置api基础地址
