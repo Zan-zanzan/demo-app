@@ -19,9 +19,9 @@ class PlaceFragment : Fragment() {
     val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
     private lateinit var adapter: PlaceAdapter
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var searchPlaceEdit: EditText
-    private lateinit var bgImageView: ImageView
+    private val recyclerView: RecyclerView? by lazy { view?.findViewById(R.id.recyclerView) }
+    private val searchPlaceEdit: EditText? by lazy { view?.findViewById(R.id.searchPlaceEdit) }
+    private val bgImageView: ImageView? by lazy { view?.findViewById(R.id.bgImageView) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,21 +34,17 @@ class PlaceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        searchPlaceEdit = view.findViewById<EditText>(R.id.searchPlaceEdit)
-        bgImageView = view.findViewById<ImageView>(R.id.bgImageView)
-
         val layoutManager = LinearLayoutManager(activity)
-        recyclerView.layoutManager = layoutManager
+        recyclerView?.layoutManager = layoutManager
         adapter = PlaceAdapter(this, viewModel.placeList)
-        recyclerView.adapter = adapter
-        searchPlaceEdit.doAfterTextChanged { editable ->
+        recyclerView?.adapter = adapter
+        searchPlaceEdit?.doAfterTextChanged { editable ->
             val content = editable.toString()
             if (content.isNotEmpty()) {
                 viewModel.searchPlaces(content)
             } else {
-                recyclerView.visibility = View.GONE
-                bgImageView.visibility = View.VISIBLE
+                recyclerView?.visibility = View.GONE
+                bgImageView?.visibility = View.VISIBLE
                 viewModel.placeList.clear()
                 adapter.notifyDataSetChanged()
             }
@@ -56,8 +52,8 @@ class PlaceFragment : Fragment() {
         viewModel.placeLiveData.observe(viewLifecycleOwner, Observer { result ->
             val places = result.getOrNull()
             if (places != null) {
-                recyclerView.visibility = View.VISIBLE
-                bgImageView.visibility = View.GONE
+                recyclerView?.visibility = View.VISIBLE
+                bgImageView?.visibility = View.GONE
                 viewModel.placeList.clear()
                 viewModel.placeList.addAll(places)
                 adapter.notifyDataSetChanged()

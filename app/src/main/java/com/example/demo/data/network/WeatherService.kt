@@ -20,7 +20,7 @@ interface WeatherService {
     /**
      * 获取未来天气信息
      */
-    @GET("v2.51/${SunnyWeatherApplication.TOKEN}/{lng},{lat}/daily.json")
+    @GET("v2.5/${SunnyWeatherApplication.TOKEN}/{lng},{lat}/daily.json")
     fun getDailyWeather(@Path("lng") lng: String, @Path("lat") lat: String):
             Call<DailyResponse>
 }

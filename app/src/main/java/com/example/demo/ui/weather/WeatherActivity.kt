@@ -22,17 +22,17 @@ import java.util.Locale
 class WeatherActivity : AppCompatActivity() {
     val viewModel by lazy { ViewModelProvider(this).get(WeatherViewModel::class.java) }
 
-    val placeName: TextView by lazy { findViewById<TextView>(R.id.placeName) }
-    val currentTemp: TextView by lazy { findViewById<TextView>(R.id.currentTemp) }
-    val currentSky: TextView by lazy { findViewById<TextView>(R.id.currentSky) }
-    val currentAQI: TextView by lazy { findViewById<TextView>(R.id.currentAQI) }
-    val nowLayout: RelativeLayout by lazy { findViewById<RelativeLayout>(R.id.nowLayout) }
-    val forecastLayout: LinearLayout by lazy { findViewById<LinearLayout>(R.id.forecastLayout) }
-    val coldRiskText: TextView by lazy { findViewById<TextView>(R.id.coldRiskText) }
-    val dressingText: TextView by lazy { findViewById<TextView>(R.id.dressingText) }
-    val ultravioletText: TextView by lazy { findViewById<TextView>(R.id.ultravioletText) }
-    val carWashingText: TextView by lazy { findViewById<TextView>(R.id.carWashingText) }
-    val weatherLayout: ScrollView by lazy { findViewById<ScrollView>(R.id.weatherLayout) }
+    val placeName: TextView by lazy { findViewById(R.id.placeName) }
+    val currentTemp: TextView by lazy { findViewById(R.id.currentTemp) }
+    val currentSky: TextView by lazy { findViewById(R.id.currentSky) }
+    val currentAQI: TextView by lazy { findViewById(R.id.currentAQI) }
+    val nowLayout: RelativeLayout by lazy { findViewById(R.id.nowLayout) }
+    val forecastLayout: LinearLayout by lazy { findViewById(R.id.forecastLayout) }
+    val coldRiskText: TextView by lazy { findViewById(R.id.coldRiskText) }
+    val dressingText: TextView by lazy { findViewById(R.id.dressingText) }
+    val ultravioletText: TextView by lazy { findViewById(R.id.ultravioletText) }
+    val carWashingText: TextView by lazy { findViewById(R.id.carWashingText) }
+    val weatherLayout: ScrollView by lazy { findViewById(R.id.weatherLayout) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
