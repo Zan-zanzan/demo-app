@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class WeatherActivity : AppCompatActivity() {
-    val viewModel by lazy { ViewModelProvider(this).get(WeatherViewModel::class.java) }
+    val viewModel by lazy { ViewModelProvider(this)[WeatherViewModel::class.java] }
 
     val placeName: TextView by lazy { findViewById(R.id.placeName) }
     val currentTemp: TextView by lazy { findViewById(R.id.currentTemp) }
@@ -77,10 +77,10 @@ class WeatherActivity : AppCompatActivity() {
             val temperature = daily.temperature[i]
             val view =
                 LayoutInflater.from(this).inflate(R.layout.forecast_item, forecastLayout, false)
-            val dateInfo = view.findViewById(R.id.dataInfo) as TextView
-            val skyIcon = view.findViewById(R.id.skyIcon) as ImageView
-            val skyInfo = view.findViewById(R.id.skyInfo) as TextView
-            val temperatureInfo = view.findViewById(R.id.temperatureInfo) as TextView
+            val dateInfo: TextView = view.findViewById(R.id.dataInfo)
+            val skyIcon: ImageView = view.findViewById(R.id.skyIcon)
+            val skyInfo: TextView = view.findViewById(R.id.skyInfo)
+            val temperatureInfo: TextView = view.findViewById(R.id.temperatureInfo)
             val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             dateInfo.text = simpleDateFormat.format(skycon.date)
             val sky = getSky(skycon.value)
