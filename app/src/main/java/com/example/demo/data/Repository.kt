@@ -1,7 +1,6 @@
 package com.example.demo.data
 
 import androidx.lifecycle.liveData
-import com.example.demo.data.model.DailyResponse
 import com.example.demo.data.model.Place
 import com.example.demo.data.model.Weather
 import com.example.demo.data.network.SunnyWeatherNetwork
@@ -58,4 +57,8 @@ object Repository {
             }
             emit(result)
         }
+
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 }

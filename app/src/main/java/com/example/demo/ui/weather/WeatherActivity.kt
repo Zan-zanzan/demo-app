@@ -10,7 +10,6 @@ import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.demo.R
 
@@ -20,19 +19,19 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class WeatherActivity : AppCompatActivity() {
-    val viewModel by lazy { ViewModelProvider(this)[WeatherViewModel::class.java] }
+    private val viewModel by lazy { ViewModelProvider(this)[WeatherViewModel::class.java] }
 
-    val placeName: TextView by lazy { findViewById(R.id.placeName) }
-    val currentTemp: TextView by lazy { findViewById(R.id.currentTemp) }
-    val currentSky: TextView by lazy { findViewById(R.id.currentSky) }
-    val currentAQI: TextView by lazy { findViewById(R.id.currentAQI) }
-    val nowLayout: RelativeLayout by lazy { findViewById(R.id.nowLayout) }
-    val forecastLayout: LinearLayout by lazy { findViewById(R.id.forecastLayout) }
-    val coldRiskText: TextView by lazy { findViewById(R.id.coldRiskText) }
-    val dressingText: TextView by lazy { findViewById(R.id.dressingText) }
-    val ultravioletText: TextView by lazy { findViewById(R.id.ultravioletText) }
-    val carWashingText: TextView by lazy { findViewById(R.id.carWashingText) }
-    val weatherLayout: ScrollView by lazy { findViewById(R.id.weatherLayout) }
+    private val placeName: TextView by lazy { findViewById(R.id.placeName) }
+    private val currentTemp: TextView by lazy { findViewById(R.id.currentTemp) }
+    private val currentSky: TextView by lazy { findViewById(R.id.currentSky) }
+    private val currentAQI: TextView by lazy { findViewById(R.id.currentAQI) }
+    private val nowLayout: RelativeLayout by lazy { findViewById(R.id.nowLayout) }
+    private val forecastLayout: LinearLayout by lazy { findViewById(R.id.forecastLayout) }
+    private val coldRiskText: TextView by lazy { findViewById(R.id.coldRiskText) }
+    private val dressingText: TextView by lazy { findViewById(R.id.dressingText) }
+    private val ultravioletText: TextView by lazy { findViewById(R.id.ultravioletText) }
+    private val carWashingText: TextView by lazy { findViewById(R.id.carWashingText) }
+    private val weatherLayout: ScrollView by lazy { findViewById(R.id.weatherLayout) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +45,7 @@ class WeatherActivity : AppCompatActivity() {
         if (viewModel.placeName.isEmpty()) {
             viewModel.placeName = intent.getStringExtra("place_name") ?: ""
         }
-        viewModel.weatherLiveData.observe(this, Observer { result ->
+        viewModel.weatherLiveData.observe(this) { result ->
             val weather = result.getOrNull()
             if (weather != null) {
                 showWeatherInfo(weather)
@@ -54,7 +53,7 @@ class WeatherActivity : AppCompatActivity() {
                 Toast.makeText(this, "无法成功获取天气信息", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
             }
-        })
+        }
         viewModel.refreshWeather(viewModel.locationLng, viewModel.locationLat)
     }
 
